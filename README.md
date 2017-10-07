@@ -1,6 +1,6 @@
 # Android Build Box
 [![Docker Build Statu](https://img.shields.io/docker/build/vitorsalgado/android-build-box.svg)](https://hub.docker.com/r/vitorsalgado/android-build-box/) 
-[![Docker Size](https://img.shields.io/imagelayers/image-size/vitorsalgado/android-build-box/latest.svg)](https://imagelayers.io/?images=vitorsalgado/android-build-box:latest)
+[![Docker Size](https://images.microbadger.com/badges/image/vitorsalgado/android-build-box.svg)](https://microbadger.com/images/vitorsalgado/android-build-box)
 
 Full Android Continuous Integration Environment with Docker
 

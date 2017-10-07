@@ -1,0 +1,13 @@
+language: bash
+services: docker
+
+install:
+  - git clone https://github.com/docker-library/official-images.git ~/official-images
+
+script:
+  - IMAGE=vitorsalgado/android-build-box:latest
+  - docker build -t $IMAGE .
+  - ~/official-images/test/run.sh $IMAGE
+
+after_script:
+  - docker images

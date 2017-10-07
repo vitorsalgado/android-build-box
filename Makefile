@@ -1,4 +1,4 @@
-TAG := synastry/android-box
+TAG := vitorsalgado/android-build-box
 
 build:
 	clear

@@ -1,5 +1,6 @@
 # Android Build Box
-[![Docker Build Statu](https://img.shields.io/docker/build/vitorsalgado/android-build-box.svg)](https://hub.docker.com/r/vitorsalgado/android-build-box/) 
+[![Travis Build Status](https://travis-ci.org/vitorsalgado/android-build-box.svg?branch=master)](https://travis-ci.org/vitorsalgado/android-build-box) 
+[![Docker Build Status](https://img.shields.io/docker/build/vitorsalgado/android-build-box.svg)](https://hub.docker.com/r/vitorsalgado/android-build-box/)  
 [![Docker Size](https://images.microbadger.com/badges/image/vitorsalgado/android-build-box.svg)](https://microbadger.com/images/vitorsalgado/android-build-box)
 
 Full Android Continuous Integration Environment with Docker

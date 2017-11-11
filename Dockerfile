@@ -38,7 +38,7 @@ ENV ANDROID_SDK_COMPONENTS platform-tools,build-tools-27.0.1,android-27,extra-an
 
 ADD android-accept-licenses.sh /opt/tools/android-accept-licenses.sh
 
-RUN yes | sdkmanager --licenses
+RUN yes | ${ANDROID_HOME}/tools/bin/sdkmanager --licenses
 RUN chmod +x /opt/tools/android-accept-licenses.sh
 RUN mkdir ${ANDROID_HOME}/licenses && echo 8933bad161af4178b1185d1a37fbf41ea5269c55 > ${ANDROID_HOME}/licenses/android-sdk-license
 RUN ["sh", "-c", "/opt/tools/android-accept-licenses.sh \"${ANDROID_HOME}/tools/android update sdk --no-ui --all --filter ${ANDROID_SDK_COMPONENTS}\""]

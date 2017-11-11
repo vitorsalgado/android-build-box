@@ -7,8 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -y wget git curl zip software-properties-common && \
     add-apt-repository ppa:openjdk-r/ppa && \
-    apt-get update && apt-get install -y openjdk-7-jdk openjdk-8-jdk && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get update && apt-get install -y openjdk-7-jdk openjdk-8-jdk
 
 ENV JAVA7_HOME /usr/lib/jvm/java-7-openjdk-amd64
 ENV JAVA8_HOME /usr/lib/jvm/java-8-openjdk-amd64
@@ -38,7 +37,6 @@ ENV ANDROID_SDK_COMPONENTS platform-tools,build-tools-27.0.1,android-27,extra-an
 
 ADD android-accept-licenses.sh /opt/tools/android-accept-licenses.sh
 
-RUN yes | ${ANDROID_HOME}/tools/bin/sdkmanager --licenses
 RUN chmod +x /opt/tools/android-accept-licenses.sh
 RUN mkdir ${ANDROID_HOME}/licenses && echo 8933bad161af4178b1185d1a37fbf41ea5269c55 > ${ANDROID_HOME}/licenses/android-sdk-license
 RUN ["sh", "-c", "/opt/tools/android-accept-licenses.sh \"${ANDROID_HOME}/tools/android update sdk --no-ui --all --filter ${ANDROID_SDK_COMPONENTS}\""]
@@ -86,7 +84,6 @@ RUN apt-get update && \
     libiberty-dev \
     zlib1g-dev \
     libjsoncpp-dev && \
-    rm -rf /var/lib/apt/lists/* && \
     git clone https://github.com/facebook/redex /redex
 
 
@@ -166,8 +163,6 @@ RUN sudo apt-get update -qq \
 
 ENV GCLOUD_SDK_CONFIG /usr/lib/google-cloud-sdk/lib/googlecloudsdk/core/config.json
 
-# gcloud config doesn't update config.json. See the official Dockerfile for details:
-#  https://github.com/GoogleCloudPlatform/cloud-sdk-docker/blob/master/Dockerfile
 RUN /usr/bin/gcloud config set --installation component_manager/disable_update_check true \
     && sed -i -- 's/\"disable_updater\": false/\"disable_updater\": true/g' $GCLOUD_SDK_CONFIG \
     && /usr/bin/gcloud config set --installation core/disable_usage_reporting true \
@@ -179,4 +174,4 @@ RUN /usr/bin/gcloud config set --installation component_manager/disable_update_c
 # ------------------------------------------------------
 # --- Cleanup
 RUN apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/lib/apt/lists/*

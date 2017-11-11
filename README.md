@@ -6,11 +6,12 @@
 Full Android Continuous Integration Environment with Docker
 
 * JDK 8;
-* Android SDK 26;
-* Android Build Tools 26.0.2;
+* Android SDK 27;
+* Android Build Tools 27.0.1;
 * [Infer](http://fbinfer.com/) for static code analysis;
 * [Redex](http://fbredex.com/) to opnimize Android bytecode;
-* Ruby for Fastlane.
+* Ruby with Fastlane;
+* Google Cloud SDK.
 
 ### Build
 `make`

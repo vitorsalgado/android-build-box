@@ -154,24 +154,6 @@ RUN apt-get update && \
 
 
 # ------------------------------------------------------
-# --- Google Gloud SDK
-
-RUN echo "deb https://packages.cloud.google.com/apt cloud-sdk-`lsb_release -c -s` main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-RUN apt-get update -qq \
-    && apt-get install -y -qq google-cloud-sdk
-
-ENV GCLOUD_SDK_CONFIG /usr/lib/google-cloud-sdk/lib/googlecloudsdk/core/config.json
-
-RUN /usr/bin/gcloud config set --installation component_manager/disable_update_check true \
-    && sed -i -- 's/\"disable_updater\": false/\"disable_updater\": true/g' $GCLOUD_SDK_CONFIG \
-    && /usr/bin/gcloud config set --installation core/disable_usage_reporting true \
-    && sed -i -- 's/\"disable_usage_reporting\": false/\"disable_usage_reporting\": true/g' $GCLOUD_SDK_CONFIG
-
-
-
-
-# ------------------------------------------------------
 # --- Cleanup
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*

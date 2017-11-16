@@ -37,8 +37,9 @@ RUN dpkg --add-architecture i386 && apt-get update && apt-get install -yq libstd
     curl -L ${ANDROID_SDK_URL} | tar xz -C /usr/local && \
     chmod -R +w $ANDROID_HOME && \
     chmod +x /opt/tools/android-accept-licenses.sh && \
-    mkdir ${ANDROID_HOME}/licenses && echo 8933bad161af4178b1185d1a37fbf41ea5269c55 > ${ANDROID_HOME}/licenses/android-sdk-license && \
-    ["sh", "-c", "/opt/tools/android-accept-licenses.sh \"${ANDROID_HOME}/tools/android update sdk --no-ui --all --filter ${ANDROID_SDK_COMPONENTS}\""]
+    mkdir ${ANDROID_HOME}/licenses && echo 8933bad161af4178b1185d1a37fbf41ea5269c55 > ${ANDROID_HOME}/licenses/android-sdk-license
+
+RUN ["sh", "-c", "/opt/tools/android-accept-licenses.sh \"${ANDROID_HOME}/tools/android update sdk --no-ui --all --filter ${ANDROID_SDK_COMPONENTS}\""]
 
 ENV PATH $PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${GRADLE_HOME}/bin
 
